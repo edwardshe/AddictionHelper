@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Quit Your Addiction!</title>
+		<title>Alevior</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body>
 		<section id="banner">
-			<h2><strong>Stop</strong> your addiction</h2>
+			<h2><strong>Alevior</strong> helps you conquer your addiction</h2>
 			<ul class="actions">
 				<li><a href="#" class="button special">Get started</a></li>
 			</ul>
