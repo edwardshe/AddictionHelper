@@ -7,6 +7,11 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body>
+		<section id="banner">
+			<ul class="actions">
+				<li><a href="#" class="button special">Home</a></li>
+			</ul>
+		</section>
 		<section id="one" class = "wrapper">
 			<div class="inner">
 				<form method="post" action="#">
