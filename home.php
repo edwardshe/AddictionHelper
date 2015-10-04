@@ -34,7 +34,7 @@ foreach ($result as $val) {
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Home</title>
+		<title>Home | Alevior</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -48,6 +48,7 @@ foreach ($result as $val) {
 			<ul class="actions">
 				<li><a href="#" class="button special">Profile</a></li>
 				<li><a href="#log" class="button special">Log My Progress</a></li>
+				<li><a href="journal.php" class="button special">Journal</a></li>
 				<li><a href="logout.php" class="button special">Logout</a></li>
 			</ul>
 		</section>
@@ -84,11 +85,11 @@ foreach ($result as $val) {
 						<label for="date" style="padding-bottom:20px">Date</label>
 						<div class="6u 12u$(xsmall)" style="margin-left:100px"><input type="date" name="date" id="date" /></div>
 						<div class="4u 12u$(small)" style="padding-bottom:20px">
-							<input type="radio" id="goalYes" name="goal" checked>
+							<input type="radio" id="goalYes" name="goal" value="1" checked>
 							<label for="goalYes">Yes, I met my goal</label>
 						</div>
 						<div class="4u 12u$(small)" style="padding-bottom:20px">
-							<input type="radio" id="goalNo" name="goal">
+							<input type="radio" id="goalNo" value="0" name="goal">
 							<label for="goalNo">No, I did not</label>
 						</div>
 							<input type="text" name="times" id="times" value="" placeholder="How many times did you cave?" />
