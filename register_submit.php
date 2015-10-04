@@ -11,10 +11,10 @@ $phoneUpdates = $_POST['phoneUpdates'];
 $password = hash('sha512', $password);
 
 $dbh = new PDO('sqlite:info/login.db');
-$stmt = "INSERT INTO login (firstName, lastName, email, phone, password, emailUpdates, 
+$stmt = $dbh->prepare("INSERT INTO login (firstName, lastName, email, phone, password, emailUpdates, 
 	phoneUpdates) VALUES (:firstName, :lastName, :email, :phone, :password, :emailUpdates, 
-	:phoneUpdates)";
-$dbh->execute(array(
+	:phoneUpdates)");
+$stmt->execute(array(
 	':firstName' => $firstName,
 	':lastName' => $lastName,
 	':email' => $email,
