@@ -45,26 +45,41 @@ else
 			</div>
 		</section>
 
-		<section id="log" class="wrapper style2 special">
+		<section id="streak" class="wrapper style2 special">
+			<div class="inner narrow">
+				<header>
+					<h2>Current Goal Streak</h2>
+					<p>999 Days</p>
+				</header>
+				<div class="features">
+				<canvas id="buyers2" width="600" height="400"></canvas>
+				</div>
+			</div>
+		</section>
+
+		<section id="log" class="wrapper special">
 				<div class="inner narrow">
 					<header>
 						<h2>Log Your Progress</h2>
 					</header>
 					<form class="grid-form" method="post" action="#">
-						<div class="form-control narrow">
-							<label for="name">Name</label>
-							<input name="name" id="name" type="text">
+						<label for="date" style="padding-bottom:20px">Date</label>
+						<div class="6u 12u$(xsmall)" style="margin-left:100px"><input type="date" name="date" id="date" /></div>
+						<div class="4u 12u$(small)" style="padding-bottom:20px">
+							<input type="radio" id="goalYes" name="goalYes" checked>
+							<label for="priority-low">Yes, I met my goal</label>
 						</div>
-						<div class="form-control narrow">
-							<label for="email">Email</label>
-							<input name="email" id="email" type="email">
+						<div class="4u 12u$(small)" style="padding-bottom:20px">
+							<input type="radio" id="goalNo" name="goalNo">
+							<label for="priority-normal">No, I did not</label>
 						</div>
-						<div class="form-control">
+							<input type="text" name="times" id="times" value="" placeholder="How many times did you cave?" />
+						<div class="form-control" style="padding-top:20px">
 							<label for="message">Log Entry</label>
 							<textarea name="message" id="message" rows="4"></textarea>
 						</div>
 						<ul class="actions">
-							<li><input value="Send Message" type="submit"></li>
+							<li><input value="Log" type="submit"></li>
 						</ul>
 					</form>
 				</div>
@@ -85,7 +100,9 @@ else
 			}
 
 		    var buyers = document.getElementById('buyers').getContext('2d');
+		    var buyers2 = document.getElementById('buyers2').getContext('2d');
 		    new Chart(buyers).Line(buyerData);
+		    new Chart(buyers2).Line(buyerData);
 		</script>
 	</body>
 </html>
