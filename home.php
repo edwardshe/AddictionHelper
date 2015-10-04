@@ -13,7 +13,8 @@
 			<p>Together, we can quit.</p>
 			<ul class="actions">
 				<li><a href="#" class="button special">Profile</a></li>
-				<li><a href="#progress" class="button special">View Progress</a></li>
+				<li><a href="#log" class="button special">Log My Progress</a></li>
+				<li><a href="logout.php" class="button special">Logout</a></li>	
 			</ul>
 		</section>
 
