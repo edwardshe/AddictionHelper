@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-error_reporting(-1);
 $LOGGED_IN = 0;
 if (isset($_COOKIE['alevior'])) $LOGGED_IN = 1;
 if (!$LOGGED_IN) header('Location: index.php');
@@ -19,7 +16,6 @@ foreach ($result as $val) {
 		$dateArray[] = $val['date'];
 	}
 }
-echo $rowid;
 ?>
 <!DOCTYPE html>
 <html>
