@@ -86,10 +86,11 @@ if (empty($goalText))
 			<div class="inner narrow">
 				<header>
 					<h2>Current Goal Streak</h2>
-					<p>999 Days</p>
+					<p id="currentStreak">0 Days</p>
 				</header>
 				<div class="features">
-				<canvas id="streakChart" width="600" height="400"></canvas>
+					<canvas id="streakChart" width="600" height="400"></canvas>
+					<p id="streakChartBad"></p>
 				</div>
 			</div>
 		</section>
@@ -98,9 +99,11 @@ if (empty($goalText))
 			<div class="inner">
 				<header class="major">
 					<h2>Your Progress</h2>
+					<p>Test</p>
 				</header>
 				<div class="features">
 					<canvas id="progressChart" width="600" height="400"></canvas>
+					<p id="progressChartBad"></p>
 				</div>
 			</div>
 		</section>
@@ -217,6 +220,7 @@ if (empty($goalText))
 					streakMax = prev;
 				}
 			}
+			document.getElementById('currentStreak').innerHTML = prev + " " + "Days";
 
 			var progressData = [];
 
@@ -229,29 +233,36 @@ if (empty($goalText))
 			}
 
 		    var ctx = document.getElementById('progressChart').getContext('2d');
-		  	var myChart = new Chart(ctx).Scatter([{ label: "Point", data: progressData }], {
-				showScale: true,
-				scaleShowLabels: true,
-				scaleShowHorizontalLines: true,
-				scaleShowVerticalLines: false,
-				scaleLineWidth: 1,
-				scaleGridLineColor: "#999",
-				scaleLabel: "<%=value%>",
-				scaleDateFormat: "mm/dd",
-				scaleTimeFormat: "mm/dd",
-				scaleDateTimeFormat: "mm/dd",
-				scaleGridLineWidth: 1,
-				useUtc: true,
-				pointDot: true,
-				pointHitDetectionRadius: 10,
-				scaleType: 'date',
-				animation: false,
+		    if(progressData.length > 1)
+		    {
+			  	var myChart = new Chart(ctx).Scatter([{ label: "Point", data: progressData }], {
+					showScale: true,
+					scaleShowLabels: true,
+					scaleShowHorizontalLines: true,
+					scaleShowVerticalLines: false,
+					scaleLineWidth: 1,
+					scaleGridLineColor: "#999",
+					scaleLabel: "<%=value%>",
+					scaleDateFormat: "mm/dd",
+					scaleTimeFormat: "mm/dd",
+					scaleDateTimeFormat: "mm/dd",
+					scaleGridLineWidth: 1,
+					useUtc: true,
+					pointDot: true,
+					pointHitDetectionRadius: 10,
+					scaleType: 'date',
+					animation: false,
 
-				scaleOverride: true,
-				scaleSteps: steps,
-				scaleStepWidth: Math.ceil(maxY/steps),
-				scaleStartValue: 0
-			});  
+					scaleOverride: true,
+					scaleSteps: steps,
+					scaleStepWidth: Math.ceil(maxY/steps),
+					scaleStartValue: 0
+				});  
+		  	}
+		  	else
+		  	{
+				  	document.getElementById('progressChartBad').innerHTML = "               Add at least 2 logs to view chart!               ";
+		  	}
 
 
 			var streakData = [];
@@ -265,29 +276,36 @@ if (empty($goalText))
 			}
 
 		    var stx = document.getElementById('streakChart').getContext('2d');
-		  	var myChart = new Chart(stx).Scatter([{ label: "Streak", data: streakData }], {
-				showScale: true,
-				scaleShowLabels: true,
-				scaleShowHorizontalLines: true,
-				scaleShowVerticalLines: false,
-				scaleLineWidth: 1,
-				scaleGridLineColor: "#999",
-				scaleLabel: "<%=value%>",
-				scaleDateFormat: "mm/dd",
-				scaleTimeFormat: "mm/dd",
-				scaleDateTimeFormat: "mm/dd",
-				scaleGridLineWidth: 1,
-				useUtc: true,
-				pointDot: true,
-				pointHitDetectionRadius: 10,
-				scaleType: 'date',
-				animation: false,
+		    if(streakData.length > 1)
+		    {
+			  	var myChart = new Chart(stx).Scatter([{ label: "Streak", data: streakData }], {
+					showScale: true,
+					scaleShowLabels: true,
+					scaleShowHorizontalLines: true,
+					scaleShowVerticalLines: false,
+					scaleLineWidth: 1,
+					scaleGridLineColor: "#999",
+					scaleLabel: "<%=value%>",
+					scaleDateFormat: "mm/dd",
+					scaleTimeFormat: "mm/dd",
+					scaleDateTimeFormat: "mm/dd",
+					scaleGridLineWidth: 1,
+					useUtc: true,
+					pointDot: true,
+					pointHitDetectionRadius: 10,
+					scaleType: 'date',
+					animation: false,
 
-				scaleOverride: true,
-				scaleSteps: steps,
-				scaleStepWidth: Math.ceil(streakMax/steps),
-				scaleStartValue: 0
-			}); 
+					scaleOverride: true,
+					scaleSteps: steps,
+					scaleStepWidth: Math.ceil(streakMax/steps),
+					scaleStartValue: 0
+				}); 
+		  	}
+		  	else 
+		  	{
+		  		document.getElementById('streakChartBad').innerHTML = "Add at least 2 logs to view chart!"
+		  	}
 
 		</script>
 
