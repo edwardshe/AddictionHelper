@@ -32,11 +32,13 @@ $dbh = null;
 	</head>
 	<body>
 		<section id="banner">
+			<h2><strong>Alevior</strong></h2>
 			<ul class="actions">
-				<li><a href="#" class="button special">Home</a></li>
+				<li><a href="index.php" class="button special">Home</a></li>
+				<li><a href="index.php#about" class="button special">About Us</a></li>
+				<li><a href="index.php#contact" class="button special">Contact Us</a></li>
 			</ul>
 		</section>
-
 		<section id="one" class = "wrapper">
 			<div class="inner">
 				<p>Successfully registered!</p>
