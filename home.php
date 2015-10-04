@@ -13,6 +13,23 @@ else
 		$firstName = $val['firstName'];
 	}
 }
+
+$rowid = $_COOKIE['alevior'];
+$dbh = new PDO('sqlite:info/logs.db');
+$stmt = $dbh->prepare("SELECT * FROM logs WHERE user = ? ORDER BY date");
+$stmt->bindParam(1, $rowid);
+$stmt->execute();
+$result = $stmt->fetchAll();
+$dateArray = array();
+$goalArray = array();
+$timesArray = array();
+$max = 0;
+foreach ($result as $val) {
+	$dateArray[] = $val['date'];
+	$goalArray[] = $val['goal'];
+	$timesArray[] = $val['times'];
+	if ($val['times'] > $max) $max = $val['times'];
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -62,21 +79,21 @@ else
 					<header>
 						<h2>Log Your Progress</h2>
 					</header>
-					<form class="grid-form" method="post" action="#">
+					<form class="grid-form" method="post" action="log.php">
 						<label for="date" style="padding-bottom:20px">Date</label>
 						<div class="6u 12u$(xsmall)" style="margin-left:100px"><input type="date" name="date" id="date" /></div>
 						<div class="4u 12u$(small)" style="padding-bottom:20px">
-							<input type="radio" id="goalYes" name="goalYes" checked>
+							<input type="radio" id="goalYes" name="goal" checked>
 							<label for="goalYes">Yes, I met my goal</label>
 						</div>
 						<div class="4u 12u$(small)" style="padding-bottom:20px">
-							<input type="radio" id="goalNo" name="goalNo">
+							<input type="radio" id="goalNo" name="goal">
 							<label for="goalNo">No, I did not</label>
 						</div>
 							<input type="text" name="times" id="times" value="" placeholder="How many times did you cave?" />
 						<div class="form-control" style="padding-top:20px">
-							<label for="message">Log Entry</label>
-							<textarea name="message" id="message" rows="4"></textarea>
+							<label for="log">Log Entry</label>
+							<textarea name="log" id="log" rows="4" value=""></textarea>
 						</div>
 						<ul class="actions">
 							<li><input value="Log" type="submit"></li>
