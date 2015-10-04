@@ -42,8 +42,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		</section>
 		<section id="one" class = "wrapper">
 			<div class="inner">
-				<p><?php echo hash('sha512', $password)?></p>
-				<p><?php echo $p?></p>
 				<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 					<div class="row uniform">
 						<div class="6u$ 12u$(xsmall)">
