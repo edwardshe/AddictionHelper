@@ -99,7 +99,6 @@ if (empty($goalText))
 			<div class="inner">
 				<header class="major">
 					<h2>Your Progress</h2>
-					<p>Test</p>
 				</header>
 				<div class="features">
 					<canvas id="progressChart" width="600" height="400"></canvas>
