@@ -10,7 +10,8 @@
 		<section id="banner">
 			<h2><strong>Alevior</strong> helps you conquer your addiction</h2>
 			<ul class="actions">
-				<li><a href="#" class="button special">Get started</a></li>
+				<li><a href="#" class="button special">Sign up</a></li>
+				<li><a href="#" class="button special">Login</a></li>
 			</ul>
 		</section>
 
