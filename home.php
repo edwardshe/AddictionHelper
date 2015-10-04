@@ -90,8 +90,8 @@ if (empty($goalText))
 				</header>
 				<div class="features">
 					<canvas id="streakChart" width="600" height="400"></canvas>
-					<p id="streakChartBad"></p>
 				</div>
+				<p id="streakChartBad"></p>
 			</div>
 		</section>
 
@@ -102,8 +102,8 @@ if (empty($goalText))
 				</header>
 				<div class="features">
 					<canvas id="progressChart" width="600" height="400"></canvas>
-					<p id="progressChartBad"></p>
 				</div>
+				<p id="progressChartBad"></p>
 			</div>
 		</section>
 
