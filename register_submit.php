@@ -1,28 +1,25 @@
 <?php
+//ini_set('display_errors',1);
+//ini_set('display_startup_errors',1);
+//error_reporting(-1);
+
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 $password = $_POST['password'];
 $confirmPassword = $_POST['confirmPassword'];
-$emailUpdates = $_POST['emailUpdates'];
-//$phoneUpdates = $_POST['phoneUpdates'];
+$emailUpdates = (int) isset($_POST['emailUpdates']);
+$phoneUpdates = (int) isset($_POST['phoneUpdates']);
 
 $password = hash('sha512', $password);
 
-$dbh = new PDO('sqlite:info/login.db');
-$stmt = $dbh->prepare("INSERT INTO login (firstName, lastName, email, phone, password, emailUpdates, 
-	phoneUpdates) VALUES (:firstName, :lastName, :email, :phone, :password, :emailUpdates, 
-	:phoneUpdates)");
-$stmt->execute(array(
-	':firstName' => $firstName,
-	':lastName' => $lastName,
-	':email' => $email,
-	':phone' => $phone,
-	':password' => $password,
-	':emailUpdates' => $emailUpdates,
-	':phoneUpdates' => ""
-	));
+$dbh = new PDO('sqlite:./info/login.db');
+//$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$stmt = $dbh->prepare('INSERT INTO login (firstName, lastName, email, phone, password, emailUpdates, phoneUpdates) VALUES (?, ?, ?, ?, ?, ?, ?)');
+
+$stmt->execute(array($firstName, $lastName, $email, $phone, $password, $emailUpdates, $phoneUpdates));
+$dbh = null;
 
 ?>
 <!DOCTYPE html>
