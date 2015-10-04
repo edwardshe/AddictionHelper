@@ -20,6 +20,8 @@ $stmt = $dbh->prepare("SELECT * FROM logs WHERE user = ? ORDER BY date");
 $stmt->bindParam(1, $rowid);
 $stmt->execute();
 $result = $stmt->fetchAll();
+$dbh = null;
+
 $dateArray = array();
 $goalArray = array();
 $timesArray = array();
@@ -29,6 +31,22 @@ foreach ($result as $val) {
 	$goalArray[] = $val['goal'];
 	$timesArray[] = $val['times'];
 	if ($val['times'] > $max) $max = $val['times'];
+}
+
+$dbh = new PDO('sqlite:info/goals.db');
+$stmt = $dbh->prepare("SELECT goal FROM goals WHERE user = ? ORDER BY rowid DESC LIMIT 1");
+$stmt->bindParam(1, $rowid);
+$stmt->execute();
+$result = $stmt->fetchAll();
+
+foreach ($result as $val)
+{
+	$goalText = $val['goal'];
+}
+
+if (empty($goalText))
+{
+	$goalText = "You have not set a goal yet. Click <a href='goal.php'>here</a> to set one.";
 }
 ?>
 <!DOCTYPE HTML>
@@ -45,11 +63,22 @@ foreach ($result as $val) {
 			<h2>Welcome back, <strong><?php echo $firstName ?></strong></h2>
 			<p>Together, we can quit.</p>
 			<ul class="actions">
-				<li><a href="#" class="button special">Profile</a></li>
-				<li><a href="#log" class="button special">Log My Progress</a></li>
+				<li><a href="goal.php" class="button special">Set Goal</a></li>
+				<li><a href="#log" class="button special">Log Progress</a></li>
 				<li><a href="journal.php" class="button special">Journal</a></li>
 				<li><a href="logout.php" class="button special">Logout</a></li>
 			</ul>
+		</section>
+
+		<section id="progress" class="wrapper special">
+			<div class="inner">
+				<header class="major">
+					<h2>Goal</h2>
+				</header>
+				<p>
+					<?php echo $goalText ?>
+				</p>
+			</div>
 		</section>
 
 		<section id="progress" class="wrapper special">
