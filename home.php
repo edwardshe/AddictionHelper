@@ -86,6 +86,11 @@ else
 			</section>
 
 		<script>
+
+			$dateArray = array("9/29" ,"9/30", "10/1", "10/2", "10/3", "10/4");
+			$timesArray = array("3" ,"5", "4", "2", "3", "1");
+
+
 		    var buyerData = {
 				labels : ["January","February","March","April","May","June"],
 				datasets : [
