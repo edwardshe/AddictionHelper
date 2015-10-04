@@ -13,6 +13,23 @@ else
 		$firstName = $val['firstName'];
 	}
 }
+
+$rowid = $_COOKIE['alevior'];
+$dbh = new PDO('sqlite:info/logs.db');
+$stmt = $dbh->prepare("SELECT * FROM logs WHERE user = ? ORDER BY date");
+$stmt->bindParam(1, $rowid);
+$stmt->execute();
+$result = $stmt->fetchAll();
+$dateArray = array();
+$goalArray = array();
+$timesArray = array();
+$max = 0;
+foreach ($result as $val) {
+	$dateArray[] = $val['date'];
+	$goalArray[] = $val['goal'];
+	$timesArray[] = $val['times'];
+	if ($val['times'] > $max) $max = $val['times'];
+}
 ?>
 <!DOCTYPE HTML>
 <html>
