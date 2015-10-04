@@ -7,6 +7,9 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body>
+		<?php
+
+		?>
 		<section id="banner">
 			<ul class="actions">
 				<li><a href="#" class="button special">Home</a></li>
@@ -14,7 +17,7 @@
 		</section>
 		<section id="one" class = "wrapper">
 			<div class="inner">
-				<form method="post" action="#">
+				<form method="post" action="register_submit.php">
 					<div class="row uniform">
 						<div class="6u 12u$(xsmall)">
 							<input type="text" name="firstName" id="firstName" value="" placeholder="First Name" />
@@ -28,17 +31,23 @@
 						<div class="6u 12u$(xsmall)">
 							<input type="text" name="phone" id="phone" value="" placeholder="Phone" />
 						</div>
+						<div class="6u 12u$(xsmall)">
+							<input type="password" name="password" id="password" value="" placeholder="Password" />
+						</div>
+						<div class="6u 12u$(xsmall)">
+							<input type="password" name="confirmPassword" id="confirmPassword" value="" placeholder="Confirm Password" />
+						</div>
 						<div class="6u 12u$(small)">
-							<input type="checkbox" id="copy" name="copy" checked>
+							<input type="checkbox" id="emailUpdates" name="emailUpdates" checked>
 							<label for="copy">Sign me up for (very occassional) email updates!</label>
 						</div>
 						<div class="6u$ 12u$(small)">
-							<input type="checkbox" id="human" name="human">
+							<input type="checkbox" id="phoneUpdates" name="phoneUpdates">
 							<label for="human">Text me a daily reminder to fill out the progress log!</label>
 						</div>
 						<div class="12u$">
 							<ul class="actions">
-								<li><input type="submit" value="Send Message" /></li>
+								<li><input type="submit" value="Submit" /></li>
 								<li><input type="reset" value="Reset" class="alt" /></li>
 							</ul>
 						</div>
