@@ -1,3 +1,19 @@
+<?php
+$LOGGED_IN = 0;
+if (isset($_COOKIE['alevior'])) $LOGGED_IN = 1;
+if (!$LOGGED_IN) header('index.php');
+else
+{
+	$dbh = new PDO('sqlite:info/login.db');
+	$stmt = $dbh->prepare("SELECT * FROM login WHERE rowid = ? ORDER BY rowid DESC LIMIT 1");
+	$stmt->bindParam(1, $_COOKIE['alevior']);
+	$stmt->execute();
+	$result = $stmt->fetchAll();
+	foreach ($result as $val) {
+		$firstName = $val['firstName'];
+	}
+}
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -9,11 +25,12 @@
 	</head>
 	<body>
 		<section id="banner">
-			<h2>Welcome back, <strong>User</strong></h2>
+			<h2>Welcome back, <strong><?php echo $firstName ?></strong></h2>
 			<p>Together, we can quit.</p>
 			<ul class="actions">
 				<li><a href="#" class="button special">Profile</a></li>
-				<li><a href="#progress" class="button special">View Progress</a></li>
+				<li><a href="#log" class="button special">Log My Progress</a></li>
+				<li><a href="logout.php" class="button special">Logout</a></li>
 			</ul>
 		</section>
 

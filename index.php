@@ -1,6 +1,7 @@
 <?php
 $LOGGED_IN = 0;
 if (isset($_COOKIE['alevior'])) $LOGGED_IN = 1;
+if ($LOGGED_IN) header('Location: home.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,11 +17,10 @@ if (isset($_COOKIE['alevior'])) $LOGGED_IN = 1;
 			<ul class="actions">
 				<li><a href="register.php" class="button special">Sign up</a></li>
 				<li><a href="login.php" class="button special">Login</a></li>
-				<?php if ($LOGGED_IN) echo '<li><a href="logout.php" class="button special">Logout</a></li>';?>
 			</ul>
 		</section>
 
-		<section id="one" class = "wrapper">
+		<section id="about" class = "wrapper">
 			<div class="inner">
 				<h2 id="content">About Alevior</h2>
 					<p>Description goes here</p>

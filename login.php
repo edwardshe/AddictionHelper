@@ -14,12 +14,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 	if (isset($_COOKIE['alevior'])) {
-		$c = $_COOKIE['alevior'];
-		if (hash('sha512', $c) == $p) header('Location: home.php');
+		header('Location: home.php');
 	} elseif (isset($_POST['password'])){
 		if (hash('sha512', $password) == $p) {
 			$hour = time() + 60 * 60;
-			setcookie('alevior', $_POST['password'], $hour);
+			setcookie('alevior', $_POST['rowid'], $hour);
 			header('Location: home.php');
 		}
 	}
@@ -37,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	<body>
 		<section id="banner">
 			<ul class="actions">
-				<li><a href="#" class="button special">Home</a></li>
+				<li><a href="./" class="button special">Home</a></li>
 			</ul>
 		</section>
 		<section id="one" class = "wrapper">
