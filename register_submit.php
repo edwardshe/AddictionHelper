@@ -6,7 +6,7 @@ $phone = $_POST['phone'];
 $password = $_POST['password'];
 $confirmPassword = $_POST['confirmPassword'];
 $emailUpdates = $_POST['emailUpdates'];
-$phoneUpdates = $_POST['phoneUpdates'];
+//$phoneUpdates = $_POST['phoneUpdates'];
 
 $password = hash('sha512', $password);
 
@@ -21,7 +21,7 @@ $stmt->execute(array(
 	':phone' => $phone,
 	':password' => $password,
 	':emailUpdates' => $emailUpdates,
-	':phoneUpdates' => $phoneUpdates
+	':phoneUpdates' => ""
 	));
 
 ?>

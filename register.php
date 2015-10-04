@@ -39,11 +39,11 @@
 						</div>
 						<div class="6u 12u$(small)">
 							<input type="checkbox" id="emailUpdates" name="emailUpdates" checked>
-							<label for="copy">Sign me up for (very occassional) email updates!</label>
+							<label for="emailUpdates">Sign me up for (very occassional) email updates!</label>
 						</div>
 						<div class="6u$ 12u$(small)">
 							<input type="checkbox" id="phoneUpdates" name="phoneUpdates">
-							<label for="human">Text me a daily reminder to fill out the progress log!</label>
+							<label for="phoneUpdates">Text me a daily reminder to fill out the progress log!</label>
 						</div>
 						<div class="12u$">
 							<ul class="actions">
