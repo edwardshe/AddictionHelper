@@ -41,8 +41,8 @@ $dbh = null;
 			<div class="inner">
 				<p>Successfully registered!</p>
 				<ul class="actions">
-				<li><a href="#" class="button special">Login</a></li>
-				<li><a href="#" class="button special">Return to home</a></li>
+				<li><a href="login.php" class="button special">Login</a></li>
+				<li><a href="index.php" class="button special">Return to home</a></li>
 			</ul>
 			</div>
 		</section>
