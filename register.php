@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Register | Alevior</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+		<section id="one" class = "wrapper">
+			<div class="inner">
+				<form method="post" action="#">
+					<div class="row uniform">
+						<div class="6u 12u$(xsmall)">
+							<input type="text" name="firstName" id="firstName" value="" placeholder="First Name" />
+						</div>
+						<div class="6u 12u$(xsmall)">
+							<input type="text" name="lastName" id="firstName" value="" placeholder="Last Name" />
+						</div>
+						<div class="6u 12u$(xsmall)">
+							<input type="email" name="email" id="email" value="" placeholder="Email" />
+						</div>
+						<div class="6u 12u$(xsmall)">
+							<input type="text" name="phone" id="phone" value="" placeholder="Phone" />
+						</div>
+						<div class="6u 12u$(small)">
+							<input type="checkbox" id="copy" name="copy" checked>
+							<label for="copy">Sign me up for (very occassional) email updates!</label>
+						</div>
+						<div class="6u$ 12u$(small)">
+							<input type="checkbox" id="human" name="human">
+							<label for="human">Text me a daily reminder to fill out the progress log!</label>
+						</div>
+						<div class="12u$">
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+								<li><input type="reset" value="Reset" class="alt" /></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</body>
+</html>
