@@ -34,7 +34,7 @@ foreach ($result as $val) {
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Home</title>
+		<title>Home | Alevior</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -47,6 +47,7 @@ foreach ($result as $val) {
 			<ul class="actions">
 				<li><a href="#" class="button special">Profile</a></li>
 				<li><a href="#log" class="button special">Log My Progress</a></li>
+				<li><a href="journal.php" class="button special">Journal</a></li>
 				<li><a href="logout.php" class="button special">Logout</a></li>
 			</ul>
 		</section>
