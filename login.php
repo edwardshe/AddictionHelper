@@ -36,8 +36,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	</head>
 	<body>
 		<section id="banner">
+			<h2><strong>Alevior</strong></h2>
 			<ul class="actions">
-				<li><a href="#" class="button special">Home</a></li>
+				<li><a href="index.php" class="button special">Home</a></li>
+				<li><a href="index.php#about" class="button special">About Us</a></li>
+				<li><a href="index.php#contact" class="button special">Contact Us</a></li>
 			</ul>
 		</section>
 		<section id="one" class = "wrapper">
@@ -50,6 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						<div class="6u$ 12u$(xsmall)">
 							<input type="password" name="password" id="password" value="" placeholder="Password" />
 						</div>
+						<?php if($_SERVER["REQUEST_METHOD"] == "POST") {echo "<p style='color:red;margin:0px'>Incorrect Username or Password</p>";} ?>
 						<div class="12u$">
 							<ul class="actions">
 								<li><input type="submit" value="Login" /></li>
