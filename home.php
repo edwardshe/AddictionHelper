@@ -1,7 +1,7 @@
 <?php
 $LOGGED_IN = 0;
 if (isset($_COOKIE['alevior'])) $LOGGED_IN = 1;
-if (!$LOGGED_IN) header('index.php');
+if (!$LOGGED_IN) header('Location: index.php');
 else
 {
 	$dbh = new PDO('sqlite:info/login.db');
