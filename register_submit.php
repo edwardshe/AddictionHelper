@@ -11,7 +11,7 @@ $phoneUpdates = $_POST['phoneUpdates'];
 $password = hash('sha512', $password);
 
 $dbh = new PDO('sqlite:login.db');
-$stmt = "INSERT INTO login VALUES (firstName, lastName, email, phone, password, emailUpdates, 
+$stmt = "INSERT INTO login (firstName, lastName, email, phone, password, emailUpdates, 
 	phoneUpdates) VALUES (:firstName, :lastName, :email, :phone, :password, :emailUpdates, 
 	:phoneUpdates)";
 $dbh->execute(array(
