@@ -14,6 +14,13 @@
 			</ul>
 		</section>
 
+		<section id="one" class = "wrapper">
+			<div class="inner">
+				<h2 id="content">About Alevior</h2>
+					<p>Description goes here</p>
+			</div>
+		</section>
+
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/skel.min.js"></script>
 		<script src="assets/js/util.js"></script>
