@@ -57,11 +57,12 @@ if (empty($goalText))
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<script src='assets/js/Chart.js'></script>
+		<script src='assets/js/Chart.Scatter.js'></script>
 	</head>
 	<body>
 		<section id="banner">
 			<h2>Welcome back, <strong><?php echo $firstName ?></strong></h2>
-			<p>Together, we can quit.</p>
+			<p>Together, we can achieve <i>anything</i>.</p>
 			<ul class="actions">
 				<li><a href="goal.php" class="button special">Set Goal</a></li>
 				<li><a href="#log" class="button special">Log Progress</a></li>
@@ -81,17 +82,6 @@ if (empty($goalText))
 			</div>
 		</section>
 
-		<section id="progress" class="wrapper special">
-			<div class="inner">
-				<header class="major">
-					<h2>Your Progress</h2>
-				</header>
-				<div class="features">
-					<canvas id="buyers" width="600" height="400"></canvas>
-				</div>
-			</div>
-		</section>
-
 		<section id="streak" class="wrapper style2 special">
 			<div class="inner narrow">
 				<header>
@@ -99,12 +89,23 @@ if (empty($goalText))
 					<p>999 Days</p>
 				</header>
 				<div class="features">
-				<canvas id="buyers2" width="600" height="400"></canvas>
+				<canvas id="streakChart" width="600" height="400"></canvas>
 				</div>
 			</div>
 		</section>
 
-		<section id="log" class="wrapper special">
+		<section id="progress" class="wrapper special">
+			<div class="inner">
+				<header class="major">
+					<h2>Your Progress</h2>
+				</header>
+				<div class="features">
+					<canvas id="progressChart" width="600" height="400"></canvas>
+				</div>
+			</div>
+		</section>
+
+		<section id="log" class="wrapper style2 special">
 				<div class="inner narrow">
 					<header>
 						<h2>Log Your Progress</h2>
@@ -132,7 +133,7 @@ if (empty($goalText))
 				</div>
 			</section>
 
-		<script>
+<!--		<script>
 		    var buyerData = {
 				labels : ["January","February","March","April","May","June"],
 				datasets : [
@@ -150,6 +151,145 @@ if (empty($goalText))
 		    var buyers2 = document.getElementById('buyers2').getContext('2d');
 		    new Chart(buyers).Line(buyerData);
 		    new Chart(buyers2).Line(buyerData);
+		</script> -->
+
+		<script>
+
+			var steps = 4;
+			<?php 
+				if($max <= 0)
+				{
+					$max = 1;
+				}
+				echo "var maxY = $max;\n"; 
+
+				$jsDateArray = json_encode($dateArray);
+				echo "var javascript_date_array = " . $jsDateArray . ";\n";
+
+				$jsTimesArray = json_encode($timesArray);
+				echo "var javascript_times_array = " . $jsTimesArray . ";\n";
+
+/*				$goalStreakArray = array();
+				$streakMax = 1;
+				$prev = 0;
+				$len = count($goalArray);
+				for($i = 0; $i < $len; $i++)
+				{
+					if($goalArray[i] == intval("0"))
+					{
+						$goalStreakArray[] = 0;
+						$prev = 0;
+					}
+					else
+					{
+						$goalStreakArray[] = ($prev + 1);
+						$prev = $prev + 1;
+					}
+
+					if($prev > $streakMax)
+					{
+						$streakMax = $prev;
+					}
+				} */
+				$jsGoalArray = json_encode($goalArray);
+				//echo "var streakMax = " . $streakMax . ";\n";
+				echo "var javascript_goal_array = " . $jsGoalArray . ";\n";
+			?>
+
+			var javascript_streak_goal_array = new Array();
+			var len = javascript_goal_array.length;
+			var prev = 0;
+			var streakMax = 1;
+			for(i = 0; i < len; i++)
+			{
+				if(javascript_goal_array[i] == 0)
+				{
+					javascript_streak_goal_array.push(0);
+					prev = 0;
+				}
+				else
+				{
+					javascript_streak_goal_array.push(prev+1);
+					prev = prev + 1;
+				}
+				if(prev > streakMax)
+				{
+					streakMax = prev;
+				}
+			}
+
+			var progressData = [];
+
+			for (i = 0; i < javascript_date_array.length; i++) {
+				progressData.push({
+					x: Date.parse(javascript_date_array[i]),
+					y: javascript_times_array[i]
+				});
+
+			}
+
+		    var ctx = document.getElementById('progressChart').getContext('2d');
+		  	var myChart = new Chart(ctx).Scatter([{ label: "Point", data: progressData }], {
+				showScale: true,
+				scaleShowLabels: true,
+				scaleShowHorizontalLines: true,
+				scaleShowVerticalLines: false,
+				scaleLineWidth: 1,
+				scaleGridLineColor: "#999",
+				scaleLabel: "<%=value%>",
+				scaleDateFormat: "mm/dd",
+				scaleTimeFormat: "mm/dd",
+				scaleDateTimeFormat: "mm/dd",
+				scaleGridLineWidth: 1,
+				useUtc: true,
+				pointDot: true,
+				pointHitDetectionRadius: 10,
+				scaleType: 'date',
+				animation: false,
+
+				scaleOverride: true,
+				scaleSteps: steps,
+				scaleStepWidth: Math.ceil(maxY/steps),
+				scaleStartValue: 0
+			});  
+
+
+			var streakData = [];
+
+			for (i = 0; i < javascript_date_array.length; i++) {
+				streakData.push({
+					x: Date.parse(javascript_date_array[i]),
+					y: javascript_streak_goal_array[i]
+				});
+
+			}
+
+		    var stx = document.getElementById('streakChart').getContext('2d');
+		  	var myChart = new Chart(stx).Scatter([{ label: "Streak", data: streakData }], {
+				showScale: true,
+				scaleShowLabels: true,
+				scaleShowHorizontalLines: true,
+				scaleShowVerticalLines: false,
+				scaleLineWidth: 1,
+				scaleGridLineColor: "#999",
+				scaleLabel: "<%=value%>",
+				scaleDateFormat: "mm/dd",
+				scaleTimeFormat: "mm/dd",
+				scaleDateTimeFormat: "mm/dd",
+				scaleGridLineWidth: 1,
+				useUtc: true,
+				pointDot: true,
+				pointHitDetectionRadius: 10,
+				scaleType: 'date',
+				animation: false,
+
+				scaleOverride: true,
+				scaleSteps: steps,
+				scaleStepWidth: Math.ceil(streakMax/steps),
+				scaleStartValue: 0
+			}); 
+
 		</script>
+
 	</body>
 </html>
