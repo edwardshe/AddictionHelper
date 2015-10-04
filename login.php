@@ -4,24 +4,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$password = $_POST["password"];
 
 	$dbh = new PDO('sqlite:info/login.db');
-	$stmt = $dbh->prepare("SELECT * FROM login WHERE email = ? ORDER BY rowid DESC LIMIT 1");
+	$stmt = $dbh->prepare("SELECT rowid, * FROM login WHERE email = ? ORDER BY rowid DESC LIMIT 1");
 	$stmt->bindParam(1, $email);
 	$stmt->execute();
 	$result = $stmt->fetchAll();
 	foreach ($result as $val) {
 		$p = $val['password'];
+		$r = $val['rowid'];
 	}
 
 
 	if (isset($_COOKIE['alevior'])) {
-		$c = $_COOKIE['alevior'];
-		if (hash('sha512', $c) == $p) header('Location: home.php');
-	} elseif (isset($_POST['password'])){
-		if (hash('sha512', $password) == $p) {
-			$hour = time() + 60 * 60;
-			setcookie('alevior', $_POST['password'], $hour);
-			header('Location: home.php');
-		}
+		header('Location: home.php');
+	} elseif (hash('sha512', $password) == $p){
+		$hour = time() + 60 * 60;
+		setcookie('alevior', $r, $hour, '/');
+		header('Location: home.php');
 	}
 }
 ?>
