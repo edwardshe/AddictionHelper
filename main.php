@@ -26,7 +26,6 @@
 		<script src="assets/js/skel.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
-		<script src="assets/js/addictionHelper.js"></script>
 
 		<footer id="footer">
 			<div class="copyright">
