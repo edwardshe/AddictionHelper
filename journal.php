@@ -30,7 +30,7 @@ foreach ($result as $val) {
 			<h2><strong>Alevior</strong></h2>
 			<ul class="actions">
 				<li><a href="home.php" class="button special">Home</a></li>
-				<li><a href="#" class="button special">Profile</a></li>
+				<li><a href="home.php#log" class="button special">Log My Progress</a></li>
 				<li><a href="logout.php" class="button special">Logout</a></li>
 			</ul>
 		</section>
