@@ -43,6 +43,10 @@ $stmt->execute(array(
 		<section id="one" class = "wrapper">
 			<div class="inner">
 				<p>Successfully registered!</p>
+				<ul class="actions">
+				<li><a href="#" class="button special">Login</a></li>
+				<li><a href="#" class="button special">Return to home</a></li>
+			</ul>
 			</div>
 		</section>
 
