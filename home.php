@@ -67,11 +67,11 @@ else
 						<div class="6u 12u$(xsmall)" style="margin-left:100px"><input type="date" name="date" id="date" /></div>
 						<div class="4u 12u$(small)" style="padding-bottom:20px">
 							<input type="radio" id="goalYes" name="goalYes" checked>
-							<label for="priority-low">Yes, I met my goal</label>
+							<label for="goalYes">Yes, I met my goal</label>
 						</div>
 						<div class="4u 12u$(small)" style="padding-bottom:20px">
 							<input type="radio" id="goalNo" name="goalNo">
-							<label for="priority-normal">No, I did not</label>
+							<label for="goalNo">No, I did not</label>
 						</div>
 							<input type="text" name="times" id="times" value="" placeholder="How many times did you cave?" />
 						<div class="form-control" style="padding-top:20px">
